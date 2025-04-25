@@ -1,1 +1,28 @@
+<<<<<<< HEAD
 body { font-family: Arial; background: #f9f9f9; padding: 20px; } table { width: 100%; border-collapse: collapse; } td, th { border: 1px solid #ccc; padding: 8px; text-align: center; }
+=======
+body {
+    font-family: sans-serif;
+    background: #f9f9f9;
+    text-align: center;
+}
+table {
+    margin: auto;
+    width: 90%;
+    border-collapse: collapse;
+    background: #fff;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+img {
+    height: 90px;
+}
+.tabs a {
+    margin: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #0070f3;
+}
+>>>>>>> 8b76d453b2507a7f7de95a43fe1874478fcf256c

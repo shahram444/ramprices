@@ -1,1 +1,6 @@
 flask
+<<<<<<< HEAD
+=======
+requests
+python-dotenv
+>>>>>>> 8b76d453b2507a7f7de95a43fe1874478fcf256c
