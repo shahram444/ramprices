@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-<<<<<<< HEAD
+
 import json
 
 app = Flask(__name__)
@@ -54,4 +54,3 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
 
->>>>>>> 8b76d453b2507a7f7de95a43fe1874478fcf256c
