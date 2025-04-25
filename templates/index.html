@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RAMPrices Full</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>Full RAMPrices (All Filters Coming Soon)</h1>
+  <table>
+    <tr>
+      <th>Image</th><th>Title</th><th>Capacity</th><th>Price</th><th>$ per GB</th><th>Buy</th>
+    </tr>
+    {% for p in products %}
+    <tr>
+      <td><img src="{{p.image}}" width="60"></td>
+      <td>{{p.title}}</td>
+      <td>{{p.capacity_gb}} GB</td>
+      <td>${{p.price}}</td>
+      <td>${{p.price_per_gb}}</td>
+      <td><a href="{{p.link}}">Amazon</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

@@ -1,0 +1,49 @@
+[
+  {
+    "title": "Corsair Vengeance DDR4 32GB (2x16GB)",
+    "image": "https://via.placeholder.com/150",
+    "price": 79.99,
+    "link": "#",
+    "capacity_gb": 32,
+    "type": "DDR4",
+    "form_factor": "DIMM",
+    "condition": "New",
+    "cas_latency": "CL16",
+    "features": [
+      "ECC",
+      "LED",
+      "Overclocking"
+    ],
+    "brand": "Corsair",
+    "seller": "Corsair Direct",
+    "price_per_gb": 2.5,
+    "compatibility": "Desktop",
+    "warranty": "5 years",
+    "marketplace": "amazon.com",
+    "ram_count": 2,
+    "customer_rating": 4.5
+  },
+  {
+    "title": "Kingston DDR5 64GB ECC Registered",
+    "image": "https://via.placeholder.com/150",
+    "price": 199.99,
+    "link": "#",
+    "capacity_gb": 64,
+    "type": "DDR5",
+    "form_factor": "RDIMM",
+    "condition": "Used",
+    "cas_latency": "CL40",
+    "features": [
+      "ECC",
+      "Registered"
+    ],
+    "brand": "Kingston",
+    "seller": "Kingston Outlet",
+    "price_per_gb": 3.12,
+    "compatibility": "Server",
+    "warranty": "3 years",
+    "marketplace": "amazon.co.uk",
+    "ram_count": 4,
+    "customer_rating": 4.0
+  }
+]
