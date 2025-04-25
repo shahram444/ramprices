@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RAM Prices ($/GB)</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Compare RAM Prices by $/GB</h1>
+    <div class="tabs">
+        <a href="/">US</a> <a href="/uk">UK</a> <a href="/de">DE</a>
+    </div>
+    <form method="get">
+        <label>Type:
+            <select name="type" onchange="this.form.submit()">
+                <option value="">All</option>
+                <option value="DDR4" {{ 'selected' if selected_type == 'DDR4' }}>DDR4</option>
+                <option value="DDR5" {{ 'selected' if selected_type == 'DDR5' }}>DDR5</option>
+            </select>
+        </label>
+        <label>Form:
+            <select name="form" onchange="this.form.submit()">
+                <option value="">All</option>
+                <option value="DIMM" {{ 'selected' if selected_form == 'DIMM' }}>DIMM</option>
+                <option value="SO-DIMM" {{ 'selected' if selected_form == 'SO-DIMM' }}>SO-DIMM</option>
+            </select>
+        </label>
+    </form>
+    <table><thead><tr><th>Product</th><th>GB</th><th>Price</th><th>$/GB</th><th>Buy</th></tr></thead>
+    <tbody>{% for p in products %}<tr>
+        <td><img src="{{ p.image }}"><br>{{ p.title }}</td>
+        <td>{{ p.capacity_gb }}</td><td>${{ p.price }}</td>
+        <td>${{ p.price_per_gb }}</td><td><a href="{{ p.link }}" target="_blank">Amazon</a></td>
+    </tr>{% endfor %}</tbody></table>
+</body>
+</html>
