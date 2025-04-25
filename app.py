@@ -1,25 +1,6 @@
 from flask import Flask, render_template, request
-
 import json
-
-app = Flask(__name__)
-
-def get_data():
-    with open("cache/dummy_data.json", "r") as f:
-        return json.load(f)
-
-@app.route("/")
-def index():
-    data = get_data()
-    filters = request.args
-    for key, val in filters.items():
-        if val:
-            data = [d for d in data if str(d.get(key, "")).lower() == val.lower()]
-    return render_template("index.html", products=data)
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
-=======
+import os
 from fetch_ram_data import fetch_ram_data
 
 app = Flask(__name__)
@@ -27,19 +8,28 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/<region>")
 def home(region="us"):
-    data = fetch_ram_data(region=region)
-    type_filter = request.args.get("type")
-    condition_filter = request.args.get("condition")
-    form_filter = request.args.get("form")
+    try:
+        data = fetch_ram_data(region=region)
+    except:
+        with open("cache/dummy_data.json", "r") as f:
+            data = json.load(f)
 
+    # Get filter inputs
+    filters = request.args
+    type_filter = filters.get("type")
+    condition_filter = filters.get("condition")
+    form_filter = filters.get("form")
+
+    # Apply filters
     if type_filter:
-        data = [p for p in data if p["type"] == type_filter]
+        data = [p for p in data if p.get("type", "").lower() == type_filter.lower()]
     if condition_filter:
-        data = [p for p in data if p["condition"] == condition_filter]
+        data = [p for p in data if p.get("condition", "").lower() == condition_filter.lower()]
     if form_filter:
-        data = [p for p in data if p["form_factor"] == form_filter]
+        data = [p for p in data if p.get("form_factor", "").lower() == form_filter.lower()]
 
-    data = sorted(data, key=lambda x: x["price_per_gb"] or 9999)
+    # Sort by price_per_gb if available
+    data = sorted(data, key=lambda x: x.get("price_per_gb") or 9999)
 
     return render_template("index.html",
         products=data,
@@ -50,7 +40,5 @@ def home(region="us"):
     )
 
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
-
